@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-//@ToString(exclude = "country")
+@ToString(exclude = "country")
 public class Address {
 
     @Id
