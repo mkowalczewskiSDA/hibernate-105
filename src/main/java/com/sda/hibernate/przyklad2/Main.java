@@ -8,8 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
         //usePersist();
-        //useMerge();
-        useUpdate();
+        useMerge();
+        //useUpdate();
+        //useDelete();
     }
 
     public static void usePersist() {
@@ -34,11 +35,11 @@ public class Main {
     private static void useMerge() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Country country = new Country();
-        //country.setId(2);
+        country.setId(2);
         country.setName("Ukraine");
         session.beginTransaction();
         country = (Country) session.merge(country);
-        country.setAlias("UA");
+        //country.setAlias("UA");
         session.getTransaction().commit();
         session.close();
     }
@@ -51,6 +52,16 @@ public class Main {
         country.setName("Japan");
         session.update(country);
         country.setAlias("JP");
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    private static void useDelete() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Country country = new Country(); //session.find(Country.class, 4);
+        country.setId(4);
+        session.delete(country);
         session.getTransaction().commit();
         session.close();
     }
