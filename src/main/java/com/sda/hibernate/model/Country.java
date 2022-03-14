@@ -1,6 +1,7 @@
 package com.sda.hibernate.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
