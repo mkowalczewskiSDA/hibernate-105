@@ -1,13 +1,16 @@
 package com.sda.hibernate.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Data
 @ToString(exclude = "country")
+@EqualsAndHashCode(exclude = "country")
 public class Address {
 
     @Id
