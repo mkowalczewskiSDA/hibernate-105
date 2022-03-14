@@ -7,7 +7,9 @@ import org.hibernate.Session;
 public class Main {
 
     public static void main(String[] args) {
-        usePersist();
+        //usePersist();
+        //useMerge();
+        useUpdate();
     }
 
     public static void usePersist() {
@@ -27,6 +29,30 @@ public class Main {
         session.getTransaction().commit();
         session.close();
 
+    }
+
+    private static void useMerge() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Country country = new Country();
+        //country.setId(2);
+        country.setName("Ukraine");
+        session.beginTransaction();
+        country = (Country) session.merge(country);
+        country.setAlias("UA");
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    private static void useUpdate() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Country country = new Country();
+        country.setId(3);
+        country.setName("Japan");
+        session.update(country);
+        country.setAlias("JP");
+        session.getTransaction().commit();
+        session.close();
     }
 
 }
