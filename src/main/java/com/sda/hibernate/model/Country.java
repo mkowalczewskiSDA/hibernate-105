@@ -18,4 +18,6 @@ public class Country {
     @Column(name = "CO_ALIAS")
     private String alias;
 
+    
+
 }

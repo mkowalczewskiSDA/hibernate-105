@@ -1,5 +1,6 @@
 package com.sda.hibernate.przyklad1;
 
+import com.sda.hibernate.model.Address;
 import com.sda.hibernate.model.Country;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,10 +12,11 @@ public class Main {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
 
-        Country country = session.find(Country.class, 1);
-        System.out.println(country.toString());
-
+        Address address = session.find(Address.class, 1);
+        //System.out.println(address.getCountry());
         session.close();
+        System.out.println(address);
+
         sessionFactory.close();
 
     }
