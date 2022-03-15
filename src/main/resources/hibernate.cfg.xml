@@ -16,6 +16,8 @@
 
         <mapping class="com.sda.hibernate.model.Country"/>
         <mapping class="com.sda.hibernate.model.Address"/>
+        <mapping class="com.sda.hibernate.model.Book"/>
+        <mapping class="com.sda.hibernate.model.Author"/>
 
     </session-factory>
 </hibernate-configuration>
