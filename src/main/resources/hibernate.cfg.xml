@@ -21,6 +21,7 @@
         <mapping class="com.sda.hibernate.model.Product"/>
         <mapping class="com.sda.hibernate.model.Category"/>
         <mapping class="com.sda.hibernate.model.Order"/>
+        <mapping class="com.sda.hibernate.model.User"/>
 
     </session-factory>
 </hibernate-configuration>

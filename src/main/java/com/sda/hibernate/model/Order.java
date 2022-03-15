@@ -27,8 +27,8 @@ public class Order {
 
     @ManyToMany
     @JoinTable(name = "Cart",
-            joinColumns = {@JoinColumn(name = "CRT_PRO_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "CRT_ORD_ID")}
+            joinColumns = {@JoinColumn(name = "CRT_ORD_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "CRT_PRO_ID")}
     )
     private Set<Product> products;
 
