@@ -18,6 +18,8 @@
         <mapping class="com.sda.hibernate.model.Address"/>
         <mapping class="com.sda.hibernate.model.Book"/>
         <mapping class="com.sda.hibernate.model.Author"/>
+        <mapping class="com.sda.hibernate.model.Product"/>
+        <mapping class="com.sda.hibernate.model.Category"/>
 
     </session-factory>
 </hibernate-configuration>
