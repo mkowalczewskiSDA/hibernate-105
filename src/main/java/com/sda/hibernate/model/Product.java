@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Data
@@ -21,5 +22,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "PRO_CAT_ID", referencedColumnName = "CAT_ID")
     private Category category;
+    @ManyToMany(mappedBy = "products")
+    private Set<Order> orders;
 
 }

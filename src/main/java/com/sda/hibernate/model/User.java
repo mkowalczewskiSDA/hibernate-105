@@ -1,12 +1,17 @@
 package com.sda.hibernate.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Data
+@ToString(exclude = {"address", "orders"})
+@EqualsAndHashCode(exclude = {"address", "orders"})
 public class User {
 
     @Id
@@ -26,6 +31,8 @@ public class User {
     @OneToOne
     @JoinColumn(name = "USR_ADD_ID", referencedColumnName = "ADD_ID")
     private Address address;
+    @OneToMany(mappedBy = "user")
+    private Set<Order> orders;
 
 
 }
