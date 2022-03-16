@@ -23,8 +23,7 @@ public class Main {
 
         GenericDao<Country> countryDao = new GenericDaoImpl<>(Country.class);
         Country country = new Country();
-        country.setId(1);
-        countryDao.deleteObject(country);
+        countryDao.findAll(3, 1).forEach(country1 -> System.out.println(country1.getId()));
 
     }
 }

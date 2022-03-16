@@ -1,5 +1,6 @@
 package com.sda.hibernate.przyklad2;
 
+import com.sda.hibernate.model.Address;
 import com.sda.hibernate.model.Country;
 import com.sda.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
@@ -8,9 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
         //usePersist();
-        useMerge();
+        //useMerge();
         //useUpdate();
         //useDelete();
+        usePersistCascade();
     }
 
     public static void usePersist() {
@@ -62,6 +64,24 @@ public class Main {
         Country country = new Country(); //session.find(Country.class, 4);
         country.setId(4);
         session.delete(country);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public static void usePersistCascade() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Country country = new Country();
+        country.setAlias("Test");
+        country.setName("Country");
+        Address address = new Address();
+        address.setStreet("test");
+        address.setCity("test");
+        address.setBuildingNo("1");
+        address.setApartmentNo("1");
+        address.setPostalCode("00-000");
+        address.setCountry(country);
+        session.beginTransaction();
+        session.persist(address);
         session.getTransaction().commit();
         session.close();
     }

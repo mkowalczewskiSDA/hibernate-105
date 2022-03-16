@@ -16,7 +16,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     }
 
     @Override
-    public T findById(int id) {
+    public T findById(int id) throws RuntimeException {
         Session session = openSession();
         T result =  session.find(entityClass, id);
         session.close();
@@ -60,7 +60,13 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public List<T> findAll(int maxResults, int firstResult) {
-        return null;
+        try (Session session = openSession()) {
+            return session.createQuery("from "+entityClass.getName(),
+                    entityClass)
+                    .setFirstResult(firstResult)
+                    .setMaxResults(maxResults)
+                    .getResultList();
+        }
     }
 
     private Session openSession() {
