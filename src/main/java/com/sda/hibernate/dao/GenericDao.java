@@ -1,10 +1,14 @@
 package com.sda.hibernate.dao;
 
+import java.util.List;
+
 public interface GenericDao<T> {
 
     T findById(int id);
     void insertObject(T t);
-    public void deleteObject(T t);
-    public void deleteObject(int id);
+    void deleteObject(T t);
+    void deleteObject(int id);
+    List<T> findAll();
+    List<T> findAll(int maxResults, int firstResult);
 
 }

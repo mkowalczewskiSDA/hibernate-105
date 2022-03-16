@@ -2,6 +2,9 @@ package com.sda.hibernate.dao;
 
 import com.sda.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class GenericDaoImpl<T> implements GenericDao<T> {
 
@@ -31,12 +34,33 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public void deleteObject(T t) {
-
+        Session session = openSession();
+        session.beginTransaction();
+        session.delete(t);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
     public void deleteObject(int id) {
+        T t = findById(id);
+        if (t != null) {
+            deleteObject(t);
+        }
+    }
 
+    @Override
+    public List<T> findAll() {
+        try (Session session = openSession()) {
+            return session.createQuery("from "+entityClass.getName(),
+                    entityClass)
+                    .getResultList();
+        }
+    }
+
+    @Override
+    public List<T> findAll(int maxResults, int firstResult) {
+        return null;
     }
 
     private Session openSession() {

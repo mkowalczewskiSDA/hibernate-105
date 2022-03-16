@@ -1,5 +1,7 @@
 package com.sda.hibernate.przyklad1;
 
+import com.sda.hibernate.dao.GenericDao;
+import com.sda.hibernate.dao.GenericDaoImpl;
 import com.sda.hibernate.model.Address;
 import com.sda.hibernate.model.Country;
 import org.hibernate.Session;
@@ -18,6 +20,11 @@ public class Main {
         System.out.println(address);
 
         sessionFactory.close();
+
+        GenericDao<Country> countryDao = new GenericDaoImpl<>(Country.class);
+        Country country = new Country();
+        country.setId(1);
+        countryDao.deleteObject(country);
 
     }
 }
