@@ -22,7 +22,11 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public void insertObject(T t) {
-
+        Session session = openSession();
+        session.beginTransaction();
+        session.persist(t);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
