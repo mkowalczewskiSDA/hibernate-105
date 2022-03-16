@@ -1,14 +1,12 @@
 package com.sda.hibernate.dao;
 
-import com.sda.hibernate.model.User;
-import com.sda.hibernate.model.User_;
+import com.sda.hibernate.model.*;
 import com.sda.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 public class UserCriteriaDaoImpl implements UserCriteriaDao {
@@ -34,9 +32,23 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
         return users;
     }
 
+    //Address i Country ma być zaciągnięte do obiektu
     @Override
     public List<User> findAllByCountryAlias(String alias) {
-        return null;
+        Root<User> root = getRoot();
+        root.fetch(User_.address)
+            .fetch(Address_.country);
+
+        criteriaQuery.where(criteriaBuilder.equal(
+                root.get(User_.address)
+                        .get(Address_.country)
+                        .get(Country_.alias) ,
+                alias));
+
+        Query query = session.createQuery(criteriaQuery);
+        List<User> users = query.getResultList();
+        session.close();
+        return users;
     }
 
 }
