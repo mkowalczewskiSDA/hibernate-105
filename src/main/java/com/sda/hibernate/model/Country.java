@@ -1,18 +1,14 @@
 package com.sda.hibernate.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-import org.hibernate.annotations.Cascade;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
 @NamedQueries({@NamedQuery(name = "country.select.all", query = "from Country")})
-@ToString(exclude = "addresses")
-@EqualsAndHashCode(exclude = "addresses")
+@Getter
+@Setter
 public class Country {
 
     @Id

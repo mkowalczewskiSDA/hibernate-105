@@ -25,6 +25,16 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     }
 
+    @Override
+    public void deleteObject(T t) {
+
+    }
+
+    @Override
+    public void deleteObject(int id) {
+
+    }
+
     private Session openSession() {
         return HibernateUtil.getSessionFactory().openSession();
     }
