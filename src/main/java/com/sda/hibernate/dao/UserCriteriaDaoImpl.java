@@ -34,4 +34,9 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
         return users;
     }
 
+    @Override
+    public List<User> findAllByCountryAlias(String alias) {
+        return null;
+    }
+
 }
