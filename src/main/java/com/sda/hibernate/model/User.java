@@ -8,6 +8,30 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
+@NamedEntityGraphs(
+        {
+                @NamedEntityGraph(
+                        name = "user-address",
+                        attributeNodes = {
+                                @NamedAttributeNode("address")
+                        }
+                ),
+                @NamedEntityGraph(
+                        name = "user-address-country",
+                        attributeNodes = {
+                                @NamedAttributeNode(value = "address", subgraph = "address-country")
+                        },
+                        subgraphs = {
+                                @NamedSubgraph(
+                                        name = "address-country",
+                                        attributeNodes = {
+                                                @NamedAttributeNode("country")
+                                        }
+                                )
+                        }
+                )
+        }
+)
 @Entity
 @Data
 @ToString(exclude = {"address", "orders"})
@@ -28,7 +52,7 @@ public class User {
     private String email;
     @Column(name = "USR_PASSWORD")
     private String password;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USR_ADD_ID", referencedColumnName = "ADD_ID")
     private Address address;
     @OneToMany(mappedBy = "user")
