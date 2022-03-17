@@ -15,5 +15,6 @@ public interface UserCriteriaDao {
     List<User> findAllWhoBoughtProduct(Product product);
     //join
     List<User> findAllWhoBoughtProductHql(Product product);
+    List<User> findAllWithOrdersMoreExpensiveThan(double price);
 
 }

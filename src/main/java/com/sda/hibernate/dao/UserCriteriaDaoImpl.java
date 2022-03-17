@@ -93,4 +93,9 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
         return users;
     }
 
+    @Override
+    public List<User> findAllWithOrdersMoreExpensiveThan(double price) {
+        return null;
+    }
+
 }
