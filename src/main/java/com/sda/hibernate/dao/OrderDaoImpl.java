@@ -5,8 +5,6 @@ import com.sda.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import java.util.List;
-
 public class OrderDaoImpl implements OrderDao  {
 
 
