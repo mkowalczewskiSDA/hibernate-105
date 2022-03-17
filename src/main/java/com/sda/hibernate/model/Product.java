@@ -1,6 +1,9 @@
 package com.sda.hibernate.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -8,6 +11,9 @@ import java.util.Set;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Product extends EntityInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

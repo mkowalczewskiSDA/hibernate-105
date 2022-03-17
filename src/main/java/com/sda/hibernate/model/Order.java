@@ -1,8 +1,6 @@
 package com.sda.hibernate.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,6 +11,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "`Order`")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Order extends EntityInfo {
 
     @Id
