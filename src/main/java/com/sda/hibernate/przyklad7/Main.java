@@ -12,12 +12,12 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        EntityGraph entityGraph = session.createEntityGraph("user-address");
+        EntityGraph entityGraph = session.createEntityGraph("user-all");
         Map<String, Object> properties = new HashMap<>();
         properties.put("javax.persistence.fetchgraph", entityGraph);
         User user = session.find(User.class, 1, properties);
-        Query query = session.createQuery("")
-                .setHint("javax.persistence.fetchgraph", entityGraph);
+        /*Query query = session.createQuery("")
+                .setHint("javax.persistence.fetchgraph", entityGraph);*/
         //User user = session.find(User.class, 1);
         session.close();
         System.out.println("test");

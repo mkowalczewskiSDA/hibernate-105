@@ -29,6 +29,10 @@ import java.util.Set;
                                         }
                                 )
                         }
+                ),
+                @NamedEntityGraph(
+                        name = "user-all",
+                        includeAllAttributes = true
                 )
         }
 )

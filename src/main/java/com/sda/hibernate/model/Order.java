@@ -1,6 +1,8 @@
 package com.sda.hibernate.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -8,7 +10,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "`Order`")
 public class Order extends EntityInfo {
 
