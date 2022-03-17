@@ -1,5 +1,6 @@
 package com.sda.hibernate.dao;
 
+import com.sda.hibernate.model.Product;
 import com.sda.hibernate.model.User;
 
 import java.time.LocalDate;
@@ -10,5 +11,7 @@ public interface UserCriteriaDao {
     List<User> findUserWhereLastNameContains(String s);
     List<User> findAllByCountryAlias(String alias);
     List<User> findAllBornBetween(LocalDate date1, LocalDate date2);
+    //join
+    List<User> findAllWhoBoughtProduct(Product product);
 
 }

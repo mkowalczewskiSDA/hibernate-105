@@ -47,7 +47,7 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
                         .get(Country_.alias) ,
                 alias));
 
-        Query query = session.createQuery(criteriaQuery);
+        Query<User> query = session.createQuery(criteriaQuery);
         List<User> users = query.getResultList();
         session.close();
         return users;
@@ -55,6 +55,16 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
 
     @Override
     public List<User> findAllBornBetween(LocalDate date1, LocalDate date2) {
+        Root<User> root = getRoot();
+        criteriaQuery.where(criteriaBuilder.between(root.get(User_.birthDate), date1, date2));
+        Query<User> query = session.createQuery(criteriaQuery);
+        List<User> users = query.getResultList();
+        session.close();
+        return users;
+    }
+
+    @Override
+    public List<User> findAllWhoBoughtProduct(Product product) {
         return null;
     }
 
