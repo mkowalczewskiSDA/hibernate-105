@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import javax.persistence.criteria.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -95,7 +96,15 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
 
     @Override
     public List<User> findAllWithOrdersMoreExpensiveThan(double price) {
-        return null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery(
+                    "select distinct u from User u " +
+                            "join u.orders o " +
+                            "where o.price > :price",
+                    User.class
+            ).setParameter("price", BigDecimal.valueOf(price))
+                    .getResultList();
+        }
     }
 
 }

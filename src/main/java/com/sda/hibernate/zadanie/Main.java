@@ -26,6 +26,9 @@ public class Main {
         System.out.println("hql");
         criteriaDao.findAllWhoBoughtProduct(productDao.findById(4))
                 .forEach(System.out::println);
+        System.out.println("price");
+        criteriaDao.findAllWithOrdersMoreExpensiveThan(2000.0)
+                .forEach(System.out::println);
 
     }
 }
