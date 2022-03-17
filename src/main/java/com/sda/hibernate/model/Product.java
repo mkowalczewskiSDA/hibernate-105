@@ -22,7 +22,7 @@ public class Product extends EntityInfo {
     @ManyToOne
     @JoinColumn(name = "PRO_CAT_ID", referencedColumnName = "CAT_ID")
     private Category category;
-    @ManyToMany(mappedBy = "products")
-    private Set<Order> orders;
+    @OneToMany(mappedBy = "product")
+    private Set<Cart> cartValues;
 
 }

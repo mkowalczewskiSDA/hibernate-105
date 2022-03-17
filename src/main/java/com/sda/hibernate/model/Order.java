@@ -26,13 +26,9 @@ public class Order extends EntityInfo {
     @ManyToOne
     @JoinColumn(name = "ORD_USR_ID", referencedColumnName = "USR_ID")
     private User user;
+    @OneToMany(mappedBy = "order")
+    private Set<Cart> cartValues;
 
 
-    @ManyToMany
-    @JoinTable(name = "Cart",
-            joinColumns = {@JoinColumn(name = "CRT_ORD_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "CRT_PRO_ID")}
-    )
-    private Set<Product> products;
 
 }

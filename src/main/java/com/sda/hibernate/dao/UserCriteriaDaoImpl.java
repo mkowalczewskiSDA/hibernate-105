@@ -65,7 +65,7 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
         return users;
     }
 
-    @Override
+    /*@Override
     public List<User> findAllWhoBoughtProduct(Product product) {
         Root<User> root = getRoot();
         Join<User, Order> orderJoin = root.join(User_.orders);
@@ -75,9 +75,9 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
         List<User> users = query.getResultList();
         session.close();
         return users;
-    }
+    }*/
 
-    @Override
+    /*@Override
     public List<User> findAllWhoBoughtProductHql(Product product) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -92,7 +92,7 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
         List<User> users = query.getResultList();
         session.close();
         return users;
-    }
+    }*/
 
     @Override
     public List<User> findAllWithOrdersMoreExpensiveThan(double price) {

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        UserCriteriaDao criteriaDao = new UserCriteriaDaoImpl();
+        /*UserCriteriaDao criteriaDao = new UserCriteriaDaoImpl();
         criteriaDao.findAllByCountryAlias("PL").forEach(System.out::println);
         criteriaDao
                 .findAllBornBetween(
@@ -29,6 +29,6 @@ public class Main {
         System.out.println("price");
         criteriaDao.findAllWithOrdersMoreExpensiveThan(2000.0)
                 .forEach(System.out::println);
-
+*/
     }
 }
