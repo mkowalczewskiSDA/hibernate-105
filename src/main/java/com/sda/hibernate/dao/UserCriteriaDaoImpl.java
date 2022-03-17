@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import javax.persistence.criteria.*;
+import java.time.LocalDate;
 import java.util.List;
 
 //https://www.baeldung.com/hibernate-criteria-queries
@@ -50,6 +51,11 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
         List<User> users = query.getResultList();
         session.close();
         return users;
+    }
+
+    @Override
+    public List<User> findAllBornBetween(LocalDate date1, LocalDate date2) {
+        return null;
     }
 
 }
