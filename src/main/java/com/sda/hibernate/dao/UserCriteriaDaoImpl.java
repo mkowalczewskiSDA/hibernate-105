@@ -3,11 +3,12 @@ package com.sda.hibernate.dao;
 import com.sda.hibernate.model.*;
 import com.sda.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import javax.persistence.criteria.*;
 import java.util.List;
+
+//https://www.baeldung.com/hibernate-criteria-queries
 
 public class UserCriteriaDaoImpl implements UserCriteriaDao {
 
