@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Data
-public class Product {
+public class Product extends EntityInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PRO_ID")

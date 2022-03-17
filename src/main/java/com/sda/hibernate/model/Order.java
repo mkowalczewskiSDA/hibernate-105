@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "`Order`")
-public class Order {
+public class Order extends EntityInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
