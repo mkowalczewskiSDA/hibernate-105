@@ -4,8 +4,8 @@ import com.sda.hibernate.model.Order;
 
 import java.util.List;
 
-public interface OrderDao extends GenericDao<Order> {
+public interface OrderDao {
 
-    public List<Order> findByDate();
+    Order findByIdWithReferences(int id);
 
 }

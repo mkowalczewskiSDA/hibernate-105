@@ -24,7 +24,7 @@ public class Main {
         addressSet.forEach(System.out::println);
         session.close();
         //System.out.println(addressSet);
-        OrderDao orderDao = new OrderDaoImpl();
+        //OrderDao orderDao = new OrderDaoImpl();
         /* przykład po
         OrderDao orderDaoTest = new OrderDao() {
             @Override
