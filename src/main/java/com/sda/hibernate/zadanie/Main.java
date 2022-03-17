@@ -23,5 +23,9 @@ public class Main {
         criteriaDao.findAllWhoBoughtProduct(productDao.findById(4))
                 .forEach(System.out::println);
 
+        System.out.println("hql");
+        criteriaDao.findAllWhoBoughtProduct(productDao.findById(4))
+                .forEach(System.out::println);
+
     }
 }

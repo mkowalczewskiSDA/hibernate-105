@@ -78,7 +78,19 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
 
     @Override
     public List<User> findAllWhoBoughtProductHql(Product product) {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Query<User> query = session.createQuery(
+                "select u from User u " +
+                        "join u.orders o " +
+                        "join o.products p " +
+                        "where p = :product",
+                User.class
+        ).setParameter("product", product);
+
+        List<User> users = query.getResultList();
+        session.close();
+        return users;
     }
 
 }
