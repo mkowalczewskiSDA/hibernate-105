@@ -13,5 +13,7 @@ public interface UserCriteriaDao {
     List<User> findAllBornBetween(LocalDate date1, LocalDate date2);
     //join
     List<User> findAllWhoBoughtProduct(Product product);
+    //join
+    List<User> findAllWhoBoughtProductHql(Product product);
 
 }

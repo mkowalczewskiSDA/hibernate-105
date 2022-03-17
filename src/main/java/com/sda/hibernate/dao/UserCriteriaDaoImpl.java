@@ -1,6 +1,7 @@
 package com.sda.hibernate.dao;
 
 import com.sda.hibernate.model.*;
+import com.sda.hibernate.model.Order;
 import com.sda.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -65,6 +66,18 @@ public class UserCriteriaDaoImpl implements UserCriteriaDao {
 
     @Override
     public List<User> findAllWhoBoughtProduct(Product product) {
+        Root<User> root = getRoot();
+        Join<User, Order> orderJoin = root.join(User_.orders);
+        Join<Order, Product> productJoin = orderJoin.join(Order_.products);
+        criteriaQuery.where(criteriaBuilder.equal(productJoin, product));
+        Query<User> query = session.createQuery(criteriaQuery);
+        List<User> users = query.getResultList();
+        session.close();
+        return users;
+    }
+
+    @Override
+    public List<User> findAllWhoBoughtProductHql(Product product) {
         return null;
     }
 
